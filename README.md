@@ -43,6 +43,46 @@ gradlew.bat run
 ./gradlew clean
 ```
 
+### 🎮 交互式 CLI 工具
+
+除了批量运行所有示例，我们还提供了一个交互式命令行工具，让您可以：
+
+- 📚 选择特定主题进行学习
+- 🎯 逐步探索不同模块
+- 💡 获取实时帮助和学习建议
+- 🛠️ 进行自定义练习
+
+#### 使用方法
+
+**Linux/macOS:**
+```bash
+# 使用启动脚本（推荐）
+./kotlin-cli.sh
+
+# 或直接运行 JAR
+java -jar build/libs/kotlin-learning-1.0.0-cli.jar
+```
+
+**Windows:**
+```bash
+# 使用批处理脚本
+kotlin-cli.bat
+
+# 或直接运行 JAR
+java -jar build\libs\kotlin-learning-1.0.0-cli.jar
+```
+
+**手动构建:**
+```bash
+# 构建 CLI 工具
+./gradlew cliJar
+
+# 运行
+java -jar build/libs/kotlin-learning-1.0.0-cli.jar
+```
+
+🎉 CLI 工具提供菜单驱动的界面，支持选择学习主题、查看帮助信息等功能。详细使用说明请参考 [CLI-README.md](CLI-README.md)。
+
 👉 更详细的环境配置、IDE 使用方式以及学习路线，请参阅 [docs/使用文档.md](docs/使用文档.md)。
 
 ## 📖 项目结构
@@ -52,6 +92,9 @@ kotlin-learning/
 ├── build.gradle.kts           # Gradle 构建配置
 ├── settings.gradle.kts        # Gradle 设置文件
 ├── README.md                  # 项目说明文档（本文件）
+├── CLI-README.md              # CLI工具使用说明
+├── kotlin-cli.sh              # Linux/macOS 启动脚本
+├── kotlin-cli.bat             # Windows 启动脚本
 ├── docs/                      # 详细学习文档
 │   ├── 快速入门.md
 │   ├── 使用文档.md
@@ -64,7 +107,10 @@ kotlin-learning/
         └── kotlin/
             └── com/
                 └── kotlinlearning/
-                    ├── Main.kt                      # 主程序入口
+                    ├── Main.kt                      # 原始主程序入口
+                    ├── CliMain.kt                   # CLI工具入口
+                    ├── cli/                         # CLI工具模块
+                    │   └── KotlinCliTool.kt
                     ├── basics/                      # 基础语法模块
                     │   └── BasicSyntaxExamples.kt
                     ├── typechecks/                  # 类型检查模块
